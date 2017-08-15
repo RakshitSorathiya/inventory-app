@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="array_category_options">
+        <item>@string/category_mobile</item>
+        <item>@string/category_laptop</item>
+        <item>@string/category_television</item>
+    </string-array>
+    <string name="category_mobile">Mobile</string>
+    <string name="category_laptop">Laptop</string>
+    <string name="category_television">Television</string>
+</resources>

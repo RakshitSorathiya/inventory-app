@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorBackground"
+            android:padding="16dp"
+            android:scrollbars="none">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/details_image"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/product_image_height"
+                android:scaleType="centerCrop"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/detail_row_margin_top"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/details_text_name"
+                    style="@style/DetailColumnTextStyle"/>
+
+                <TextView
+                    android:id="@+id/details_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    tools:text="Name"
+                    style="@style/DetailValueTextStyle"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/detail_row_margin_top"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/details_text_brand"
+                    style="@style/DetailColumnTextStyle"/>
+
+                <TextView
+                    android:id="@+id/details_brand"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    tools:text="Name"
+                    style="@style/DetailValueTextStyle"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/detail_row_margin_top"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/details_text_category"
+                    style="@style/DetailColumnTextStyle"/>
+
+                <TextView
+                    android:id="@+id/details_category"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    tools:text="Name"
+                    style="@style/DetailValueTextStyle"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/detail_row_margin_top"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/details_text_price"
+                    style="@style/DetailColumnTextStyle"/>
+
+                <TextView
+                    android:id="@+id/details_price"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    tools:text="Name"
+                    style="@style/DetailValueTextStyle"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.1"
+                    android:text="@string/details_text_discount"
+                    style="@style/DetailColumnTextStyle"/>
+
+                <TextView
+                    android:id="@+id/details_discount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    tools:text="Name"
+                    style="@style/DetailValueTextStyle"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/detail_row_margin_top"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center"
+                android:text="@string/details_text_stock"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/detail_row_margin_top"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/details_button_dec_stock"
+                    android:layout_width="@dimen/detail_button_dimen"
+                    android:layout_height="@dimen/detail_button_dimen"
+                    android:text="@string/details_button_dec"
+                    style="@style/DetailButtonStyle"/>
+
+                <TextView
+                    android:id="@+id/details_stock"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    tools:text="Name"/>
+
+                <Button
+                    android:id="@+id/details_button_inc_stock"
+                    android:layout_width="@dimen/detail_button_dimen"
+                    android:layout_height="@dimen/detail_button_dimen"
+                    android:text="@string/details_button_inc"
+                    style="@style/DetailButtonStyle"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/detail_row_margin_top"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/details_text_supp_name"
+                    style="@style/DetailSuppColumnStyle"/>
+
+                <TextView
+                    android:id="@+id/details_supp_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    tools:text="Name"
+                    style="@style/DetailValueTextStyle"/>
+
+                <Space
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/details_text_supp_email"
+                    style="@style/DetailSuppColumnStyle"/>
+
+                <TextView
+                    android:id="@+id/details_supp_email"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    tools:text="Name"
+                    style="@style/DetailValueTextStyle"/>
+
+                <ImageButton
+                    android:id="@+id/details_button_email_supp"
+                    android:layout_width="@dimen/detail_button_dimen"
+                    android:layout_height="@dimen/detail_button_dimen"
+                    android:background="@drawable/circle_button"
+                    android:src="@drawable/ic_action_email"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/detail_row_margin_top"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/details_text_supp_phone"
+                    style="@style/DetailSuppColumnStyle"/>
+
+                <TextView
+                    android:id="@+id/details_supp_phone"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    tools:text="Name"
+                    style="@style/DetailValueTextStyle"/>
+
+                <ImageButton
+                    android:id="@+id/details_button_phone_supp"
+                    android:layout_width="@dimen/detail_button_dimen"
+                    android:layout_height="@dimen/detail_button_dimen"
+                    android:background="@drawable/circle_button"
+                    android:src="@drawable/ic_action_call"/>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>

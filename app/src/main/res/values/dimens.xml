@@ -1,0 +1,11 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="activity_margin">16dp</dimen>
+    <dimen name="list_item_height">64dp</dimen>
+    <dimen name="five_dp">5dp</dimen>
+    <dimen name="empty_image_dimen">250dp</dimen>
+    <dimen name="detail_row_margin_top">10dp</dimen>
+    <dimen name="detail_button_dimen">40dp</dimen>
+    <dimen name="product_image_height">200dp</dimen>
+    <dimen name="spinner_height">48dp</dimen>
+</resources>
