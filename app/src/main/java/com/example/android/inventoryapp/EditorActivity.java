@@ -9,10 +9,10 @@ import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.NavUtils;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -51,6 +51,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 
     //Stores the URI of Image picked
     private Uri mPickedImage;
+    private static final int IMAGE_REQUEST_CODE = 1089;
     //Stores the URI of product which is selected for editing
     private Uri mCurrentProductUri;
 
@@ -100,9 +101,15 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         mProductImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                Intent intent;
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
+                    intent = new Intent(Intent.ACTION_GET_CONTENT);
+                } else {
+                    intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+                    intent.addCategory(Intent.CATEGORY_OPENABLE);
+                }
                 intent.setType("image/*");
-                startActivityForResult(intent, 0);
+                startActivityForResult(intent, IMAGE_REQUEST_CODE);
             }
         });
 
@@ -133,7 +140,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == 0 && resultCode == Activity.RESULT_OK) {
+        if (requestCode == IMAGE_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             //Return early andshow message if there was error during picking image
             if (data == null) {
                 Toast.makeText(this, getString(R.string.toast_error_picking_image), Toast.LENGTH_SHORT).show();
@@ -199,6 +206,30 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     }
 
     @Override
+    public void onBackPressed() {
+        // If the pet hasn't changed, continue with handling back button press
+        if (!mProductHasChanged) {
+            super.onBackPressed();
+            return;
+        }
+
+        // Otherwise if there are unsaved changes, setup a dialog to warn the user.
+        // Create a click listener to handle the user confirming that changes should be discarded.
+        DialogInterface.OnClickListener discardButtonClickListener =
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // User clicked "Discard" button, close the current activity.
+                        finish();
+                    }
+                };
+
+        // Show dialog that there are unsaved changes
+        Utils.showUnsavedChangesDialog(discardButtonClickListener, this);
+    }
+
+
+    @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
 
         //We need all columns this time
@@ -258,6 +289,8 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             mStockEditText.setText(String.valueOf(stock));
             Uri uri = Uri.parse(image);
             mProductImageView.setImageURI(uri);
+            mPickedImage = uri;
+            mProductImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             mSupplierNameEditText.setText(suppName);
             mSupplierEmailEditText.setText(suppEmail);
             mSupplierPhoneEditText.setText(suppPhone);
@@ -328,7 +361,9 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         String discountString = mDiscountEditText.getText().toString().trim();
         String stockString = mStockEditText.getText().toString().trim();
         String image = null;
-        if (mPickedImage != null) image = mPickedImage.toString();
+        if (mCurrentProductUri == null) {
+            if (mPickedImage != null) image = mPickedImage.toString();
+        } else image = mPickedImage.toString();
         String suppName = mSupplierNameEditText.getText().toString().trim();
         String suppEmail = mSupplierEmailEditText.getText().toString().trim();
         String suppPhone = mSupplierPhoneEditText.getText().toString().trim();
